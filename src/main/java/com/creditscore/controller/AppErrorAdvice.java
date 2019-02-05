@@ -13,9 +13,9 @@ public class AppErrorAdvice {
 
     @ExceptionHandler({RuntimeException.class})
     public ResponseEntity<Map<String, Object>> errorHandler(Exception ex) {
-        Map errorMap = new HashMap<>();
+        Map<String, Object> errorMap = new HashMap<>();
         errorMap.put("cause", ex.getMessage());
-        return new ResponseEntity<Map<String, Object>>(errorMap, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(errorMap, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }

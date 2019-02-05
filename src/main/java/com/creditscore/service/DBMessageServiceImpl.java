@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 public class DBMessageServiceImpl implements MessageService {
     @Override
     public String createMessage(String input) {
+        //no operation
         throw new UnsupportedOperationException("not implemented yet");
     }
 }

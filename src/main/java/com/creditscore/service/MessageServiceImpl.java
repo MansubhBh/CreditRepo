@@ -2,7 +2,6 @@ package com.creditscore.service;
 
 
 import org.springframework.context.annotation.Primary;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 @Primary
@@ -16,6 +15,6 @@ public class MessageServiceImpl implements MessageService {
         if ("".equals(input.trim())) {
             return "";
         }
-        return String.format("<h1>Hello! %s</h1>", input);
+        return String.format("<h1>%s</h1>", input);
     }
 }

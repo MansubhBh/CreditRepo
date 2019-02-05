@@ -1,17 +1,13 @@
 package com.creditscore.entity;
 
-import java.math.BigDecimal;
 
-/**
- * Created by boys on 5/2/19.
- */
 public class CreditCardDetail {
 
     private String bank;
     private double interest;
     private String type;
     private double limit;
-    private  String productName;
+    private String productName;
     private double yearlyFee;
     private String rewards;
     private double balanceTransfer;
@@ -19,14 +15,14 @@ public class CreditCardDetail {
     public CreditCardDetail() {
     }
 
-    public CreditCardDetail(String bank, double interest, String type, double limit, String productName, double yearlyFee, String rewards, double balanceTransfer) {
+    public CreditCardDetail(String bank, double interest, String type, double limit, double balanceTransfer, ProductDetail productDetail) {
         this.bank = bank;
         this.interest = interest;
         this.type = type;
         this.limit = limit;
-        this.productName = productName;
-        this.yearlyFee = yearlyFee;
-        this.rewards = rewards;
+        this.productName = productDetail.getProductName();
+        this.yearlyFee = productDetail.getYearlyFee();
+        this.rewards = productDetail.getRewards();
         this.balanceTransfer = balanceTransfer;
     }
 

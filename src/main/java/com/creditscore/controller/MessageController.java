@@ -3,18 +3,21 @@ package com.creditscore.controller;
 import com.creditscore.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class TestController {
+public class MessageController {
 
-    @Qualifier("defaultMessageService")
+    private final MessageService messageService;
+
     @Autowired
-    private MessageService messageService;
+    MessageController(@Qualifier("defaultMessageService")
+                      MessageService messageService) {
+        this.messageService = messageService;
+    }
 
     @GetMapping(value = "/test")
-    public String testmethod(@RequestParam("message") String message ){
+    public String testmethod(@RequestParam("message") String message) {
         return messageService.createMessage(message);
     }
 
