@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreditCardRepositoryImpl implements CreditCardRepository {
-    
+
     @Override
     public List<CreditCardDetail> prepareStaticData() {
 

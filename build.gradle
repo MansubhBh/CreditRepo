@@ -1,30 +1,88 @@
-
 apply plugin: 'java'
 apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
 
 buildscript {
     ext {
-        springBootVersion = '2.0.5.RELEASE'
+        springBootVersion = '2.1.2.RELEASE'
+        springVersion = '5.1.4.RELEASE'
+        junitPlatformVersion = '1.3.2'
+        junitJupiterVersion = '5.3.2'
+        jacksonVersion = ' 2.9.8'
     }
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE"
+        classpath "org.junit.platform:junit-platform-gradle-plugin:1.2.0"
     }
 }
 
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: "org.junit.platform.gradle.plugin"
+
+
+//java version
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+idea {
+    module {
+        jdkName "1.8"
+    }
+}
+
 version = '1.0'
 
 repositories {
     mavenCentral()
+    maven {
+        url 'http://repo1.maven.org/maven2'
+    }
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
-    compile('org.springframework.boot:spring-boot-starter-web')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    def defaultBoot = ['spring-boot-starter',
+                       'spring-boot-starter-web',
+                       'spring-boot-starter-actuator',
+                       'spring-boot-starter-security',
+                       'spring-boot-starter-webflux',
+                       'spring-boot-starter-tomcat',
+    ]
+
+    defaultBoot.each { bootModule ->
+        compile("org.springframework.boot:$bootModule:$springBootVersion")
+    }
+    compile("ch.qos.logback:logback-core:1.2.3")
+    compile("org.slf4j:slf4j-api:1.7.25")
+
+
+    def junitPlatformModules = [
+            "junit-platform-commons",
+            "junit-platform-engine",
+            "junit-platform-runner",
+    ]
+
+    junitPlatformModules.each { name ->
+        testCompile("org.junit.platform:$name:$junitPlatformVersion") {
+            exclude module: "junit"
+        }
+    }
+
+    def junitVintageModules = [
+            "junit-jupiter-api",
+            "junit-jupiter-engine",
+            "junit-jupiter-params",
+    ]
+    junitVintageModules.each { name ->
+        testCompile "org.junit.jupiter:$name:$junitJupiterVersion"
+    }
+    testCompile "org.junit.vintage:junit-vintage-engine:$junitJupiterVersion"
+
+    testCompile "org.mockito:mockito-core:2.23.4"
+
 }
+
+
