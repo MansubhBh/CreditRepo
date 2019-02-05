@@ -2,11 +2,9 @@ package com.creditscore;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
-/**
- * Created by boys on 5/2/19.
- */
-
+@EnableWebSecurity
 @SpringBootApplication
 public class Application {
 
