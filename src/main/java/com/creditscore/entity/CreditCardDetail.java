@@ -26,6 +26,7 @@ public class CreditCardDetail {
         this.balanceTransfer = balanceTransfer;
     }
 
+
     public String getBank() {
         return bank;
     }

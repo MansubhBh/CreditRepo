@@ -2,24 +2,27 @@
 Controller Test
 
 Sonar - Enable Code Quality check
-
-----
-
-Cobertura - Code Coverage
 logback - Enable Logging
-----
-
+Jacoco - Code Coverage
 CreditCard Service with TDD
     - store
     - list
     - search
     in memory
-
 CreditCard Controller with Test
 ----
-Performance Test
+MySQL server -> create table,
+                new repository, update qualifier
+                coverage (JdbcTemplate -> JdbcTemplate mockTemplate = Mockito.mock(JdbcTemplate.class);
+Make logback message colourful janino/jansi
 
 
+Kubernetes, Docker
+Elasticsearch
+
+----
+
+Performance Test Gatling
 ---
 Implement one against mysql
     - Create Table
@@ -45,6 +48,7 @@ Micrometer
 
 
 Youtube/Resources:
+- Mockito
 - Kubernetes in 5 mins, 10min, 1hr
 - Minikube
 - Docker (5min, 1hr)

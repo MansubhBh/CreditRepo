@@ -10,5 +10,7 @@ import java.util.List;
 
 public interface CreditCardRepository {
 
-    List<CreditCardDetail> prepareStaticData();
+    CreditCardDetail createCreditCard(CreditCardDetail creditCardDetail);
+    List<CreditCardDetail> listallCreditCardDetails();
+    List<CreditCardDetail> search(String keyword);
 }
