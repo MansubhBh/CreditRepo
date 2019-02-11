@@ -2,3 +2,14 @@ server:
     port: 8090
 
 security.basic.enabled: false
+
+
+elasticsearch:
+    cluster: "test"
+    host: "elasticsearch"
+    index: "creditscore"
+    port: 9200
+    type: "offer"
+    protocol: "http"
+    uri: "${elasticsearch.protocol}://${elasticsearch.host}:${elasticsearch.port}/${elasticsearch.index}/${elasticsearch.type}/_search"
+    timeout: 2000

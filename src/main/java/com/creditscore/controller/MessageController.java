@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/v1")
 public class MessageController {
 
     private final MessageService messageService;

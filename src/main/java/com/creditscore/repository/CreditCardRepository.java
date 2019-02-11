@@ -13,4 +13,5 @@ public interface CreditCardRepository {
     CreditCardDetail createCreditCard(CreditCardDetail creditCardDetail);
     List<CreditCardDetail> listallCreditCardDetails();
     List<CreditCardDetail> search(String keyword);
+    List<CreditCardDetail> searchDetail(String bank, String type);
 }

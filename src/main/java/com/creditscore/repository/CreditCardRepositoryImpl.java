@@ -4,7 +4,6 @@ import com.creditscore.entity.CreditCardDetail;
 import com.creditscore.entity.ProductDetail;
 import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,9 +40,6 @@ public class CreditCardRepositoryImpl implements CreditCardRepository {
 
     @Override
     public List<CreditCardDetail> listallCreditCardDetails() {
-        if (creditCardDetails.isEmpty() ){
-            return Collections.emptyList();
-        }
         return creditCardDetails;
     }
 
@@ -54,4 +50,12 @@ public class CreditCardRepositoryImpl implements CreditCardRepository {
                 .collect(Collectors.toList());
     }
 
+
+    @Override
+    public List<CreditCardDetail> searchDetail(String bank, String type) {
+        return creditCardDetails.stream()
+                .filter(creditCardDetail -> creditCardDetail.getBank().toLowerCase().contains(bank.trim().toLowerCase())
+                & creditCardDetail.getType().toLowerCase().contains(type.trim().toLowerCase()))
+                .collect(Collectors.toList());
+    }
 }

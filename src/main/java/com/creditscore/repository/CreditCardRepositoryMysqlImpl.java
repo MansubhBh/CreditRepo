@@ -25,4 +25,9 @@ public class CreditCardRepositoryMysqlImpl implements CreditCardRepository {
     public List<CreditCardDetail> search(String keyword) {
         return null;
     }
+
+    @Override
+    public List<CreditCardDetail> searchDetail(String bank, String type) {
+        return null;
+    }
 }

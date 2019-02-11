@@ -23,7 +23,8 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
         long startTime = Long.parseLong(MDC.get("start_time"));
         long endTime = System.currentTimeMillis();
         int statusCode = response.getStatus();
-      LOGGER.debug("uri=\"{}\", status={}, time_taken={}", request.getRequestURI(), statusCode, (endTime - startTime));
+        String query = request.getQueryString();
+        LOGGER.debug("uri=\"{}\", query=\"{}\", status={}, time_taken={}", request.getRequestURI(), query, statusCode, (endTime - startTime));
         super.afterCompletion(request, response, handler, ex);
     }
 }
