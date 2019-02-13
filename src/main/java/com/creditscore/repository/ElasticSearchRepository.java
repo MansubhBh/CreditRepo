@@ -40,16 +40,7 @@ public class ElasticSearchRepository implements CreditCardRepository {
 
         try {
             IndexRequest indexRequest = new IndexRequest("creditscore", "offer");
-            Map<String, Object> data = new HashMap<>();
-            data.put("bank", creditCardDetail.getBank());
-            data.put("balanceTransfer", creditCardDetail.getBalanceTransfer());
-            data.put("interest", creditCardDetail.getInterest());
-            data.put("limit", creditCardDetail.getLimit());
-            data.put("productName", creditCardDetail.getProductName());
-            data.put("rewards", creditCardDetail.getRewards());
-            data.put("type", creditCardDetail.getType());
-            data.put("yearlyFee", creditCardDetail.getYearlyFee());
-            indexRequest.source(data);
+            indexRequest.source(creditCardDetail.asMap());
 
             IndexResponse index = restHighLevelClient.index(indexRequest, RequestOptions.DEFAULT);
             if (index.status().getStatus() != 201) {
