@@ -92,26 +92,7 @@ create table login(username, password)
         }
 }
 
-  UserToken
-    access_token
-    refresh_token
-    validity
-
-  LoginController {
-    PostMapping("/token")
-    public LoginDetail Class (username, password)
-    if (!loginRepository.checkLogin()) {
-        throw new RuntimeException("Invalid login");
-    }
-    UserToken token = userTokenService.createUserToken(username);
-    return token;
-  }
-
-
-Add a interceptor which checks the URI and if the uri is "/token" then don't do anything
-The TokenService must be injected to Interceptor too.
-In the interceptor, if the url endsWith /addCreditCard then make sure you call a service that is UserTokenService which validates
-    the existence of the Header -> "authorization" whose value is "Bearer <whatever the token is>"
-
+----
+Video Prometheus Monitoring & Grafana
 
 
