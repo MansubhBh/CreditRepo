@@ -10,3 +10,6 @@ cd /Users/boys/tools/sonarqube-7.6/bin/macosx-universal-64
 check sonar at
 http://localhost:9000/
 
+
+
+
