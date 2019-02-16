@@ -70,11 +70,23 @@ public class CreditCardControllerTest {
     }
 
     @Test
-    public void testSearchCardDetails() throws Exception{
+    public void testSearchCardDetailsWithBank() throws Exception{
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(creditCardController)
                 .addInterceptors(new RequestInterceptor())
                 .build();
         mockMvc.perform(MockMvcRequestBuilders.get("/v1/searchCreditCard?bank=cba"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
+
+    }
+
+
+    @Test
+    public void testSearchCardDetailsWithBankAndType() throws Exception{
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(creditCardController)
+                .addInterceptors(new RequestInterceptor())
+                .build();
+        mockMvc.perform(MockMvcRequestBuilders.get("/v1/searchCreditCard?bank=cba&type=visa"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
 
