@@ -49,7 +49,7 @@ public class CreditCardControllerTest {
         ObjectMapper mapper = new ObjectMapper();
         String cardData = mapper.writeValueAsString(cardDetail);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/addCreditCard")
+        mockMvc.perform(MockMvcRequestBuilders.post("/v1/addCreditCard")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(cardData.getBytes(Charset.defaultCharset())))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -62,7 +62,7 @@ public class CreditCardControllerTest {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(creditCardController)
                 .addInterceptors(new RequestInterceptor())
                 .build();
-        mockMvc.perform(MockMvcRequestBuilders.get("/listAll"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/v1/listAll"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
             //    .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(5)))
                 .andReturn();
@@ -70,11 +70,23 @@ public class CreditCardControllerTest {
     }
 
     @Test
-    public void testSearchCardDetails() throws Exception{
+    public void testSearchCardDetailsWithBank() throws Exception{
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(creditCardController)
                 .addInterceptors(new RequestInterceptor())
                 .build();
-        mockMvc.perform(MockMvcRequestBuilders.get("/searchCreditCard?keyword=bank"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/v1/searchCreditCard?bank=cba"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
+
+    }
+
+
+    @Test
+    public void testSearchCardDetailsWithBankAndType() throws Exception{
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(creditCardController)
+                .addInterceptors(new RequestInterceptor())
+                .build();
+        mockMvc.perform(MockMvcRequestBuilders.get("/v1/searchCreditCard?bank=cba&type=visa"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
 
@@ -85,7 +97,7 @@ public class CreditCardControllerTest {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(creditCardController)
                 .setControllerAdvice(new AppErrorAdvice())
                 .build();
-        mockMvc.perform(MockMvcRequestBuilders.get("/searchCreditCard"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/v1/searchCreditCard"))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andReturn();
 

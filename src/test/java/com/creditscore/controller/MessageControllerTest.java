@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import javax.swing.tree.ExpandVetoException;
 
-@DisplayName("Hello Controller Test")
+@DisplayName("Message Controller Test")
 @RunWith(JUnitPlatform.class)
 public class MessageControllerTest {
 
@@ -38,7 +38,7 @@ public class MessageControllerTest {
         MockMvc mvc = MockMvcBuilders.standaloneSetup(messageController)
                 .addInterceptors(new RequestInterceptor())
                 .build();
-        MvcResult result = mvc.perform(MockMvcRequestBuilders.get("/test?message=trt"))
+        MvcResult result = mvc.perform(MockMvcRequestBuilders.get("/v1/test?message=trt"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
         String data = result.getResponse().getContentAsString();
@@ -53,7 +53,7 @@ public class MessageControllerTest {
         MockMvc mvc = MockMvcBuilders.standaloneSetup(messageController)
                 .setControllerAdvice(new AppErrorAdvice())
                 .build();
-        mvc.perform(MockMvcRequestBuilders.get("/test"))
+        mvc.perform(MockMvcRequestBuilders.get("/v1/test"))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andReturn();
     }
