@@ -10,8 +10,8 @@ create table if not exists offer(
     `limit` decimal(9,2),
      product_name text,
      rewards text,
-     balance_transfer decimal(9,2)
-     yearly_fee decimal(9,2),
+     balance_transfer decimal(9,2),
+     yearly_fee decimal(9,2)
 );
 
 
