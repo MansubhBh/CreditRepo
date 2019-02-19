@@ -96,3 +96,17 @@ create table login(username, password)
 Video Prometheus Monitoring & Grafana
 
 
+----
+Create these endpoints in creditscore app
+/liveness
+/readiness
+
+configure creditscore.yaml deployment file to use readiness and liveness probe.
+liveness is used to check if your pod is up and responsive
+readiness is used to check if your pod is ready to service requests. pod that is not ready will not receive any traffic.
+
+
+
+
+
+

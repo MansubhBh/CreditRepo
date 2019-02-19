@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-
 Quality Check through sonarqube
 
 cd /Users/boys/tools/sonarqube-7.6/bin/macosx-universal-64
@@ -60,4 +57,10 @@ Use these steps to clone from SourceTree, our client for using the repository co
 4. Open the directory you just created to see your repository’s files.
 
 Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
->>>>>>> 3b1db0eb3c641b78b231619642867ca1b42ee593
+
+
+#### Run locally as docker
+
+```
+docker run --link elasticsearch:elasticsearch --link mysql:mysql -p 8090:8090 -it creditscore:latest
+```

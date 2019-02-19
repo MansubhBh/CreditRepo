@@ -19,18 +19,17 @@ public class ElasticSearchConfiguration {
     private static final Logger LOGGER = LoggerFactory.getLogger(ElasticSearchConfiguration.class);
 
     @Bean(destroyMethod = "close")
-    public RestHighLevelClient restCLient(@Value("${elasticsearch.cluster}") String cluster,
+    public RestHighLevelClient restHighLevelClient(@Value("${elasticsearch.cluster}") String cluster,
                                           @Value("${elasticsearch.host}") String host,
-                                          @Value("${elasticsearch.port}") int port,
                                           @Value("${elasticsearch.protocol}") String protocol) {
 
         RestHighLevelClient client = new RestHighLevelClient(
-                RestClient.builder(new HttpHost(host, port, protocol))
+                RestClient.builder(new HttpHost(host, 9200, protocol))
                         .setFailureListener(new RestClient.FailureListener() {
 
                             @Override
                             public void onFailure(Node node) {
-                                LOGGER.error("task=elasticsearch-client-builder, message=\"error connecting to es\", host={}, port={}", host, port);
+                                LOGGER.error("task=elasticsearch-client-builder, message=\"error connecting to es\", host={}, port={}", host, 9200);
                             }
                         })
         );
