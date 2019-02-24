@@ -7,7 +7,6 @@ public interface UserTokenService {
 
     LoginResponse createUserToken(String username);
     boolean checkUserToken(String token);
-
     LoginResponse refreshUserToken(String refreshToken);
 }
 

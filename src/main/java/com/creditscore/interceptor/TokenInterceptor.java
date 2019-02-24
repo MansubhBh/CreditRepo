@@ -37,7 +37,6 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
         if (uri.contains("/addCreditCard")) {
             String authHeader = request.getHeader("authorization");
             Matcher authPatternMatcher = AUTH_HEADER_PATTERN.matcher(authHeader);
-
             if (authPatternMatcher.matches()) {
                 String accessToken = authPatternMatcher.group(1);
                 if (!userTokenService.checkUserToken(accessToken)) {
