@@ -23,6 +23,11 @@ public class HeartbeatController {
 
     @GetMapping("/liveness")
     public ResponseEntity<ServiceStatus> liveness() {
+        return new ResponseEntity<>(new ServiceStatus("live"), HttpStatus.OK);
+    }
+
+    @GetMapping("/flaky-liveness")
+    public ResponseEntity<ServiceStatus> flakyLiveness() {
         long now = System.currentTimeMillis();
         if (now - START_TIME >= FIVE_MIN) {
             return new ResponseEntity<>(new ServiceStatus("not alive"), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -30,8 +35,14 @@ public class HeartbeatController {
         return new ResponseEntity<>(new ServiceStatus("live"), HttpStatus.OK);
     }
 
+
     @GetMapping("/readiness")
     public ResponseEntity<ServiceStatus> readiness() {
+        return new ResponseEntity<>(new ServiceStatus("ready"), HttpStatus.OK);
+    }
+
+    @GetMapping("/flaky-readiness")
+    public ResponseEntity<ServiceStatus> flakyReadiness() {
         long now = System.currentTimeMillis();
         if (now - START_TIME >= THREE_MIN) {
             return new ResponseEntity<>(new ServiceStatus("not ready"), HttpStatus.INTERNAL_SERVER_ERROR);
