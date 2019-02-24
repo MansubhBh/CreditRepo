@@ -11,7 +11,8 @@ fi;
 VER="1.1.${buildNumber}"
 
 docker build --no-cache -t creditscore .
-docker tag creditscore:latest aaseek/creditscore:$VER
-docker push aaseek/creditscore:$VER
-docker push aaseek/creditscore:latest
+docker tag creditscore:latest localhost:5000/creditscore:latest
+docker push localhost:5000/creditscore:latest
+#docker push aaseek/creditscore:$VER
+#docker push aaseek/creditscore:latest
 
