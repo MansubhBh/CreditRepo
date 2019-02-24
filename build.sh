@@ -1,5 +1,15 @@
+#!/bin/bash
+
 gradle clean build
 
+buildNumber="$1"
+if [ "$buildNumber" == "" ];
+then
+  buildNumber="0"
+fi;
+
+VER="1.1.${buildNumber}"
+
 docker build --no-cache -t creditscore .
-docker tag creditscore:latest aaseek/creditscore:1.1
-docker push aaseek/creditscore:1.1
+docker tag creditscore:latest aaseek/creditscore:$VER
+docker push aaseek/creditscore:$VER
