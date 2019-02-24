@@ -64,3 +64,10 @@ Now that you're more familiar with your Bitbucket repository, go ahead and add a
 ```
 docker run --link elasticsearch:elasticsearch --link mysql:mysql -p 8090:8090 -it creditscore:latest
 ```
+
+If running docker registry locally, the images can be accessed from minikube deployments using 10.0.2.2:5000/<image_name>
+
+You need to add entry to insecure registry in the file $MINIKUBE_HOME/.minikube/machines/minikube/config.json
+
+
+
