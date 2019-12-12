@@ -3,8 +3,6 @@ package com.creditscore.repository;
 import com.creditscore.entity.CreditCardDetail;
 import com.creditscore.entity.ProductDetail;
 import org.elasticsearch.action.ActionListener;
-import org.elasticsearch.action.index.IndexRequest;
-import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
@@ -16,10 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -42,9 +37,7 @@ public class ElasticAsyncRepositoryImpl implements ElasticAsyncRepository {
     //hits
     @Override
     public CompletionStage<List<CreditCardDetail>> listallCreditCardDetails() {
-
         CompletableFuture<List<CreditCardDetail>> promise = new CompletableFuture<>();
-
 
         SearchRequest searchRequest1 = new SearchRequest("creditscore").types("offer");
         SearchSourceBuilder builder = new SearchSourceBuilder();

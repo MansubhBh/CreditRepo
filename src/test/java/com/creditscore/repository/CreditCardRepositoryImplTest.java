@@ -2,14 +2,12 @@ package com.creditscore.repository;
 
 import com.creditscore.entity.CreditCardDetail;
 import com.creditscore.entity.ProductDetail;
-import junit.framework.Assert;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.function.Executable;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
-
-import java.util.Collections;
 import java.util.List;
+
 
 @RunWith(JUnitPlatform.class)
 @DisplayName("Credit Card Repository Impl Test")

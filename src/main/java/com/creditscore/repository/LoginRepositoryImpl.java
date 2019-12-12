@@ -3,7 +3,6 @@ package com.creditscore.repository;
 
 import com.creditscore.entity.Login;
 import com.google.common.hash.Hashing;
-import org.omg.CORBA.OBJ_ADAPTER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;

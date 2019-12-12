@@ -35,7 +35,6 @@ public class HeartbeatController {
         return new ResponseEntity<>(new ServiceStatus("live"), HttpStatus.OK);
     }
 
-
     @GetMapping("/readiness")
     public ResponseEntity<ServiceStatus> readiness() {
         return new ResponseEntity<>(new ServiceStatus("ready"), HttpStatus.OK);

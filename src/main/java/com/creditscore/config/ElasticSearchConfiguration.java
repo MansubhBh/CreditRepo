@@ -20,9 +20,8 @@ public class ElasticSearchConfiguration {
 
     @Bean(destroyMethod = "close")
     public RestHighLevelClient restHighLevelClient(@Value("${elasticsearch.cluster}") String cluster,
-                                          @Value("${elasticsearch.host}") String host,
-                                          @Value("${elasticsearch.protocol}") String protocol) {
-
+                                                   @Value("${elasticsearch.host}") String host,
+                                                   @Value("${elasticsearch.protocol}") String protocol) {
         RestHighLevelClient client = new RestHighLevelClient(
                 RestClient.builder(new HttpHost(host, 9200, protocol))
                         .setFailureListener(new RestClient.FailureListener() {
